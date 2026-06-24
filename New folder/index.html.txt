@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>汉语口语极致互动版</title>
+    <title>Chinese for SDU</title>
+    <meta property="og:title" content="汉语会话301" />
+    <meta property="og:description" content="คลิกที่ประโยค เพื่อฟังและพูดตาม" />
+    <meta property="og:type" content="website" />
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="mainBody">
@@ -12,13 +16,21 @@
     <div class="phone-container">
         <header>
             <div class="top-bar">
-                <button class="lang-switch-btn" id="langBtn"> 中文 / ไทย</button>
+  <div class="lang-wrapper">
+
+    <span class="lang-text-left">ไทย</span>
+
+    <button class="lang-switch-btn" id="langBtn"></button>
+
+    <span class="lang-text-right">จีน</span>
+
+</div>
                 <div class="score-board" id="totalScore">0/100</div>
             </div>
             <div class="progress-container">
                 <div class="progress-bar" id="progressBar"></div>
             </div>
-            <h1>课文例句205-301</h1>
+            <h1 id="lessonTitle">课文例句1-100</h1>
         </header>
         
         <ul class="sentence-list" id="list"></ul>
@@ -30,10 +42,11 @@
             <img id="userImg" class="user-avatar-big" src="" alt="avatar">
             <div class="congrats-title">🎉 恭喜通关 🎉</div>
             <div class="congrats-text">
-               <span id="userName" style="color:#2c3e50; font-weight:bold;">你真棒！</span><br>
+               <span id="userName" style="color:#2c3e50; font-weight:bold;">加载中...</span><br>
+               <span>你已完成所有口语例句练习！</span>
             </div>
             <div id="displayTime" class="congrats-time"></div>
-            <button class="close-btn" onclick="liff.closeWindow()">X</button>
+            <button class="close-btn" onclick="handleUploadAndClose()">X</button>
         </div>
     </div>
 

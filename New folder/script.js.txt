@@ -1,107 +1,119 @@
+// 核心配置：只要 id 中包含 "标题" 二字，就会被判定为标题行，支持随语言一键切换
+// { id: "标题1-第15课", th: "บทที่ 15 (泰文标题示范)", zh: "第十五课 (中文标题示范)" }, 
 const sentences = [
-        { id: 205, th: "คุณชอบกีฬาอะไร", zh: "你喜欢什么运动，" },
-    { id: 206, th: "ปีนเขา เล่นสเก็ตน้ำแข็ง ว่ายน้ำ ผมชอบทั้งหมดเลย", zh: "爬山，滑冰，游泳，我都喜欢，" },
-    { id: 207, th: "คุณว่ายน้ำเก่งไหม", zh: "你游泳游得好不好，" },
-    { id: 208, th: "ผมว่ายได้ไม่เก่ง ว่ายไม่เก่งเท่าคุณ", zh: "我游得不好，没有你游得好，" },
-    { id: 209, th: "ใครแข่งกับใคร", zh: "谁跟谁比赛，" },
-    { id: 210, th: "ทีมปักกิ่งกับทีมกวางตุ้ง", zh: "北京队对广东队，" },
-    { id: 211, th: "ฉันกำลังเขียนพู่กันจีน ไม่ได้วาดรูป", zh: "我在写毛笔字，没画画，" },
-    { id: 212, th: "ผมอยากจะพักสักครู่", zh: "我想休息一会，" },
-    { id: 213, th: "การออกเสียงของฉันยังไม่ค่อยดี", zh: "我的发音还差得远呢，" },
-    { id: 214, th: "คุณเรียนภาษาจีนมานานแค่ไหนแล้ว", zh: "你学汉语学了多长时间了，" },
-    { id: 215, th: "คุณอ่านหนังสือพิมพ์จีนเข้าใจไหม", zh: "你能看懂中文报吗，" },
-    { id: 216, th: "การฟังและการพูดค่อนข้างยาก การอ่านค่อนข้างง่าย", zh: "听和说比较难，看比较容易，" },
-    { id: 217, th: "พูดช้าๆหน่อย ฉันฟังเข้าใจได้", zh: "慢点说，我听得懂，" },
-    { id: 218, th: "คุณยุ่งอะไรอยู่", zh: "你忙什么呢，" },
-    { id: 219, th: "คุณพ่อฉันมา ฉันต้องไปเป็นเพื่อนเขาเที่ยว", zh: "我父亲来了，我要陪他去旅行，" },
-    { id: 220, th: "นอกจากกวางเจาและเซี่ยงไฮ้แล้ว พวกเรายังจะไปฮ่องกงอีกด้วย", zh: "除了广州上海以外，我们还要去香港，" },
-    { id: 221, th: "โบราณสถานที่มีชื่อเสียงของจีนมีมากมาย", zh: "中国的名胜古迹多的很，" },
-    { id: 222, th: "คุณว่ามาเถอะ ผมจะเชื่อคุณ", zh: "你说吧，我听你的，" },
-    { id: 223, th: "จากปักกิ่งไปกุ้ยหลิน ต้องนั่งรถไฟนานเท่าไหร่", zh: "从北京到桂林坐火车要坐多长时间，" },
-    { id: 224, th: "หนึ่งทุ่มมีหนัง ไปตอนนี้จะทันหรือเปล่า", zh: "七点有电影，现在去来得及来不及，" },
-    { id: 225, th: "พวกเราไปดูหนังกัน", zh: "我们看电影去，" },
-    { id: 226, th: "ของที่เซี่ยงไฮ้มีเยอะกว่าที่นี่มาก", zh: "上海的东西比这多得多，" },
-    { id: 227, th: "ฉันอยากซื้อของขวัญนิดหน่อยส่งกลับไปให้ที่บ้าน", zh: "我想买些礼物寄回家去，" },
-    { id: 228, th: "คุณอยากจะไปเที่ยวที่สวนอี้หยวนไม่ใช่หรอ", zh: "你不是要去豫园游览吗，" },
-    { id: 229, th: "คุณเจอเหอจึอหรือยัง", zh: "你看见和子了吗，" },
-    { id: 230, th: "คุณเข้าไปหาเธอที่ห้องโถงใหญ่สิ", zh: "你进大厅去找她吧，" },
-    { id: 231, th: "ตั๋วเครื่องบินภายในสามวันนี้ไม่มีเลย", zh: "三天以内的机票都没有了，" },
-    { id: 232, th: "คุณควรจองตั๋วเครื่องบินเร็วกว่านี้หน่อย", zh: "您应该早点预定飞机票，" },
-    { id: 233, th: "ฉันมีธุระด่วน คุณช่วยฉันหน่อยนะ", zh: "我有急事，您帮帮忙吧，" },
-    { id: 234, th: "มีตั๋วที่คืนมาของคืนวันที่ 15 เวลาสองทุ่ม 1 ใบ", zh: "有一张十五号晚上八点的退票，" },
-    { id: 235, th: "บนตั๋วเครื่องบินเขียนไว้อยู่ เครื่องออกบ่าย 2 โมง 5 นาที (14:05 น.)", zh: "机票上写着十四点零五分起飞，" },
-    { id: 236, th: "คุณผู้หญิง กระเป๋าสตางค์ของคุณลืมไว้ที่นี่แล้ว", zh: "小姐，你的钱包忘在这了，" },
-    { id: 237, th: "ในที่สุด ก็มาถึงกุ้ยหลินแล้ว", zh: "终于到桂林了，" },
-    { id: 238, th: "โอ๊ย ร้อนจะตายอยู่แล้ว", zh: "哎呀，热死了，" },
-    { id: 239, th: "ต้องอาบน้ำให้สดชื่น ๆ สักหน่อย", zh: "一定要痛痛快快地洗个澡，" },
-    { id: 240, th: "ขอแค่ให้ผมได้อาบน้ำเร็วหน่อยก็โอเค", zh: "只要能让我早一点洗澡就行，" },
-    { id: 241, th: "พวกเราได้จองห้องพักจากทางอินเตอร์เน็ตไว้สองห้อง", zh: "我们在网上预定了两个房间，" },
-    { id: 242, th: "กรุณากดรหัส กรุณาเซ็นชื่อตรงนี้", zh: "请输入密码，请在这里签名，" },
-    { id: 243, th: "กระเป๋าใบนั้นคุณใส่เข้าไปในตู้เสื้อผ้าเถอะ", zh: "那个包你放进衣柜里去吧，" },
-    { id: 244, th: "กระเป๋าใบนั้นใหญ่มาก สามารถใส่เข้าไปได้หรือไม่ได้", zh: "那个包很大，放得进去放不进去，" },
-    { id: 245, th: "คุณเป็นอะไรหรอ", zh: "你怎么了，" },
-    { id: 246, th: "ฉันปวดหัวและไอ", zh: "我头疼，咳嗽，" },
-    { id: 247, th: "เมื่อวานตอนเย็นฉันก็เริ่มไม่สบายแล้ว", zh: "我昨天晚上就开始不舒服了，" },
-    { id: 248, th: "คุณอ้าปากสิ ผมขอดูหน่อย", zh: "你把嘴张开，我看看，" },
-    { id: 249, th: "ทานยาสักสองวันก็หายแล้ว", zh: "吃两天药就会好的，" },
-    { id: 250, th: "หวังหลานล่ะ", zh: "王兰呢，" },
-    { id: 251, th: "พอเลิกเรียนแล้วฉันก็จะไปหาเขา", zh: "我一下课就找她，" },
-    { id: 252, th: "ฉันไปหาเขาสองครั้งแล้ว เขาไม่อยู่", zh: "我找了她两次，她都不在。" },
-    { id: 253, th: "หวังหลานถูกรถชนบาดเจ็บ", zh: "王兰被车撞伤了，" },
-    { id: 254, th: "เอาผลไม้อะไรพวกนี้แล้วกัน", zh: "带些水果什么的吧，" },
-    { id: 255, th: "หน้าโรงพยาบาลซ่อมถนน รถไม่สามารถไปถึงประตูทางเข้าได้", zh: "医院前边修路，汽车到不了医院门口，" },
-    { id: 256, th: "จากที่นั่นเดินไปใกล้มาก ๆ", zh: "从那走着去很近，" },
-    { id: 257, th: "คุณดีขึ้นบ้างหรือยัง", zh: "你好点了吗，" },
-    { id: 258, th: "ดูท่าทางแล้ว คุณดีขึ้นมากเลย", zh: "看样子，你好多了，" },
-    { id: 259, th: "ฉันรู้สึกว่าดีขึ้นทุกวัน", zh: "我觉得一天比一天好，" },
-    { id: 260, th: "พวกเรานำของกินมาให้คุณนิดหน่อย", zh: "我们给你带来一些吃的，" },
-    { id: 261, th: "ไม่ได้เจอกันตั้งนานแล้ว", zh: "好久不见了，" },
-    { id: 262, th: "วันนี้ทำไมคุณว่างมาได้ล่ะ ", zh: "你今天怎么有空来了，" },
-    { id: 263, th: "ฉันมาบอกลาคุณ", zh: "我来向你告别，" },
-    { id: 264, th: "ฉันมารบกวนคุณ บ่อยๆ รู้สึกไม่สบายใจเลย", zh: "我常来打扰你，很过意不去，" },
-    { id: 265, th: "คุณยุ่งขนาดนั้น ไม่ต้องส่งฉันหรอก", zh: "你那么忙，不用送我了，" },
-    { id: 266, th: "ฉันเรียนไปด้วย ทำงานไปด้วย", zh: "我一边学习，一边工作，" },
-    { id: 267, th: "เพื่อนๆ บางคนรู้ บางคนไม่รู้", zh: "朋友们有的知道，有的不知道，" },
-    { id: 268, th: "ถือโอกาสที่ว่างสองสามวันนี้ ผมไปบอกลาพวกเขา", zh: "趁这两天有空，我去向他们告别，" },
-    { id: 269, th: "วันที่จะกลับประเทศนับวันยิ่งใกล้เข้ามาแล้ว", zh: "回国的日子越来越近了，" },
-    { id: 270, th: "ถึงแม้ว่าระยะเวลาจะไม่นาน แต่มิตรภาพของพวกเรานั้นลึกซึ้งมาก", zh: "虽然时间不长，但是我们的友谊很深，" },
-    { id: 271, th: "พวกเราเอาที่อยู่ที่ติดต่อได้ทิ้งไว้ในสมุดแล้ว", zh: "我们把通讯地址都留在本子上了，" },
-    { id: 272, th: "ให้พวกเราถ่ายรูปด้วยกันสักรูปเถอะ", zh: "让我们一起照张相吧，" },
-    { id: 273, th: "นอกจากพวกที่ฝึกงาน คนอื่นๆต่างก็มากันหมดแล้ว", zh: "除了实习的以外，都来了，" },
-    { id: 274, th: "คุณใช้ภาษาจีนร้องเพลงสักเพลงสิ", zh: "你用汉语唱个歌吧，" },
-    { id: 275, th: "ฉันร้องจบ ก็ควรจะถึงตาพวกคุณแล้ว ", zh: "我唱完就该你们了，" },
-    { id: 276, th: "ไม่รู้จริงๆ ว่าจะพูดอะไรดี", zh: "真不知道说什么好，" },
-    { id: 277, th: "ส่งทางไปรษณีย์ไม่เพียงแต่แพงเท่านั้น กระเป๋าเดินทางใบใหญ่ก็ส่งไม่ได้ด้วย", zh: "邮局寄不但贵，而且这么大的行李也不能寄，" },
-    { id: 278, th: "ผมจำไม่ค่อยได้แล้ว", zh: "我记不清楚了，" },
-    { id: 279, th: "ฉันนึกขึ้นมาได้แล้ว", zh: "我想起来了，" },
-    { id: 280, th: "ขอสอบถามหน่อย ที่นี่ฝากส่งกระเป๋าเดินทางใช่ไหม", zh: "我打听一下，这托运行李吗，" },
-    { id: 281, th: "ค่าขนส่งคิดอย่างไร", zh: "运费怎么算，" },
-    { id: 282, th: "เก็บค่าธรรมเนียมตามรายการราคานี้", zh: "按照这个价目表收费，" },
-    { id: 283, th: "คุณสามารถเอาของขนส่งมาได้", zh: "你可以把东西运来，" },
-    { id: 284, th: "กระเป๋าเดินทางของฉันใหญ่มาก คนเดียวขนย้ายไม่ไหว", zh: "我的行李很大，一个人搬不动，" },
-    { id: 285, th: "คุณเตรียมตัวเป็นอย่างไรบ้างแล้ว", zh: "你准备得怎么样了，" },
-    { id: 286, th: "คุณยังมีธุระอะไรที่ยังไม่ได้ทำ ผมช่วยคุณทำได้", zh: "你还有什么没办的事，我可以替你办，" },
-    { id: 287, th: "หนังสือสองสามเล่มนี้ฉันอยากส่งให้เพื่อน เรียกบริการส่งพัสดุไม่ทันแล้ว", zh: "这几本书我想送给朋友，来不及叫快递了，" },
-    { id: 288, th: "ผมกำลังรอคุณอยู่", zh: "我正等着你呢，" },
-    { id: 289, th: "ของของคุณเก็บเรียบร้อยแล้วใช่ไหม", zh: "你的东西收拾好了吗，" },
-    { id: 290, th: "เดินทางไกลบ้านไม่เหมือนกับอยู่บ้าน เรื่องยุ่งยากก็มากมายล่ะ", zh: "出门跟在家不一样，麻烦事就是多，" },
-    { id: 291, th: "กระเป๋าเล็ก 4 ใบ สู้กระเป๋าใหญ่ 2 ใบไม่ได้", zh: "四个小包不如两个大包好，" },
-    { id: 292, th: "สร้างความลำบากให้คุณอีกแล้ว", zh: "又给你添麻烦了，" },
-    { id: 293, th: "ยังมีเวลาอีกนานกว่าเครื่องบินจะออก", zh: "离起飞还早呢，" },
-    { id: 294, th: "คุณรีบนั่งลงก่อน ดื่มอะไรเย็นๆ สักหน่อยสิ", zh: "你快坐下，喝点冷饮吧，" },
-    { id: 295, th: "คุณไม่ได้เอาหนังสือเดินทางใส่ไว้ในกระเป๋าเดินทางใช่ไหม", zh: "你没把护照放在箱子里吧，" },
-    { id: 296, th: "อีกสักครู่ต้องทำขั้นตอนการออกนอกประเทศแล้วนะ", zh: "一会儿还要办出境手续呢，" },
-    { id: 297, th: "ระหว่างการเดินทาง ดูแลตัวเองดีๆ", zh: "一路上多保重，" },
-    { id: 298, th: "หวังว่าคุณจะติดต่อกับเราบ่อยๆ", zh: "希望你常跟我们联系，" },
-    { id: 299, th: "คุณอย่าลืมพวกเราก็แล้วกัน", zh: "你可别把我们忘了，" },
-    { id: 300, th: "ผมถึงที่นั่นแล้ว จะส่งวีแชทมาหาพวกคุณ", zh: "我到了那，就给你们发微信，" },
-    { id: 301, th: "ขออวยพรให้คุณเดินทางโดยสวัสดิภาพ", zh: "祝你一路平安，" }
+
+{ id: 1, th: "สวัสดี", zh: "你好，" },
+            { id: 2, th: "สบายดีไหม", zh: "你好吗？" },
+            { id: 3, th: "สบายดี", zh: "我很好，" },
+            { id: 4, th: "ฉันก็สบายดี", zh: "我也很好，" },
+            { id: 5, th: "อรุณสวัสดิ์", zh: "你早，" },
+            { id: 6, th: "คุณสุขภาพดีไหม", zh: "你身体好吗？" },
+            { id: 7, th: "ขอบคุณ", zh: "谢谢，" },
+            { id: 8, th: "ไปก่อนนะแล้วพบกันใหม่", zh: "再见，" },
+            { id: 9, th: "คุณงานยุ่งไหม", zh: "你工作忙吗？" },
+            { id: 10, th: "ยุ่งมาก แล้วคุณล่ะ", zh: "很忙，你呢？" },
+            { id: 11, th: "ฉันไม่ค่อยยุ่ง", zh: "我不太忙，" },
+            { id: 12, th: "พ่อแม่คุณสุขภาพดีไหม", zh: "你爸爸妈妈身体好吗？" },
+            { id: 13, th: "ฉันชื่อหม่าลี่ค่ะ", zh: "我叫玛丽，" },
+            { id: 14, th: "ยินดีที่ได้รู้จัก", zh: "认识你我很高兴，" },
+            { id: 15, th: "คุณแซ่อะไร", zh: "您贵姓？" },
+            { id: 16, th: "คุณชื่ออะไร", zh: "你叫什么名字？" },
+            { id: 17, th: "เขาแซ่อะไร", zh: "他姓什么？" },
+            { id: 18, th: "เขาไม่ใช่อาจารย์ เขาเป็นนักเรียน", zh: "他不是老师，他是学生" },
+            { id: 19, th: "เขาเป็นใคร", zh: "他是谁？" },
+            { id: 20, th: "ผมขอแนะนำหน่อย", zh: "我介绍一下，" },
+            { id: 21, th: "คุณจะไปไหน", zh: "你去哪？" },
+            { id: 22, th: "อาจารย์จางอยู่บ้านไหม", zh: "张老师在家吗？" },
+            { id: 23, th: "ฉันเป็นลูกศิษย์ของอาจารย์จาง", zh: "我是张老师的学生，" },
+            { id: 24, th: "เชิญเข้ามา", zh: "请进，" },
+            { id: 25, th: "วันนี้วันที่เท่าไร", zh: "今天几号？" },
+            { id: 26, th: "วันนี้วันที่ 8", zh: "今天8号，" },
+            { id: 27, th: "วันนี้ไม่ใช่วันพฤหัส เมื่อวานวันพฤหัส", zh: "今天不是星期四，昨天星期四，" },
+            { id: 28, th: "ตอนเย็นคุณจะทำอะไร", zh: "晚上你做什么？" },
+            { id: 29, th: "วันเกิดคุณ วันที่เท่าไรเดือนอะไร", zh: "你的生日是几月几号？" },
+            { id: 30, th: "พวกเราไปบ้านเขาตอนเช้า ดีไหม", zh: "我们上午去他家好吗？" },
+            { id: 31, th: "ครอบครัวคุณมีกี่คน", zh: "你家有几口人？" },
+            { id: 32, th: "แม่คุณทำงานอะไร", zh: "你妈妈做什么工作？" },
+            { id: 33, th: "เขาทำงานที่มหาวิทยาลัย", zh: "她在大学工作，" },
+            { id: 34, th: "ครอบครัวฉันมีพ่อแม่ และน้องชายอีก 1 คน", zh: "我家有爸爸、妈妈和一个弟弟，" },
+            { id: 35, th: "พี่ชายแต่งงานแล้ว", zh: "哥哥结婚了，" },
+            { id: 36, th: "พวกเขายังไม่มีลูก", zh: "他们没有孩子，" },
+            { id: 37, th: "ตอนนี้กี่โมง", zh: "现在几点？" },
+            { id: 38, th: "ตอนนี้ 7 โมง 25 นาที", zh: "现在七点二十五分，" },
+            { id: 39, th: "คุณไปเรียนกี่โมง", zh: "你几点上课？" },
+            { id: 40, th: "ไปตอน 7 โมง 45", zh: "差一刻八点去，" },
+            { id: 41, th: "ฉันจะไปทานข้าว", zh: "我去吃饭，" },
+            { id: 42, th: "พวกเราจะไปกันเมื่อไร", zh: "我们什么时候去？" },
+            { id: 43, th: "เช้าเกินไป", zh: "太早了，" },
+            { id: 44, th: "ฉันก็ตื่น6โมงครึ่งเช่นกัน", zh: "我也六点半起床，" },
+            { id: 45, th: "คุณพักอยู่ที่ไหน", zh: "你住在哪儿？" },
+            { id: 46, th: "ฉันพักอยู่ที่หอพักนักศึกษาต่างชาติ", zh: "我住在留学生宿舍，" },
+            { id: 47, th: "ห้องพักหมายเลขอะไร", zh: "多少号房间？" },
+            { id: 48, th: "บ้านคุณอยู่ที่ไหน", zh: "你家在哪儿？" },
+            { id: 49, th: "ยินดีคุณไปเที่ยวนะ", zh: "欢迎你去玩，" },
+            { id: 50, th: "เขาไปบ่อย", zh: "她常去，" },
+            { id: 51, th: "พวกเราไปด้วยกันเถอะ", zh: "我们一起去吧，" },
+            { id: 52, th: "ถ้าอย่างนั้นดีมากๆเลย", zh: "那太好了，" },
+            { id: 53, th: "ตึก 8 อยู่ข้างที่ทำการไปรษณีย์", zh: "八号楼在邮局旁边，" },
+            { id: 54, th: "ไปตึก 8 ไปอย่างไร", zh: "去八号楼怎么走？" },
+            { id: 55, th: "ตึกนั้นก็คือตึก 8", zh: "那个楼就是八号楼，" },
+            { id: 56, th: "ขอถามหน่อย ที่ทำการไปรษณีย์อยู่ที่ไหนครับ", zh: "请问，邮局在哪儿？" },
+            { id: 57, th: "เดินตรงไป ข้างหน้าก็จะเป็นที่ทำการไปรษณีย์แล้ว", zh: "往前走就是邮局，" },
+            { id: 58, th: "ที่ทำการไปรษณีย์ ห่างไกลจากที่นี่ไหม", zh: "邮局离这远不远？" },
+            { id: 59, th: "ห้างสรรพสินค้าอยู่ที่ไหน", zh: "百货大楼在什么地方？" },
+            { id: 60, th: "ขึ้นรถที่ไหน", zh: "在哪儿坐车？" },
+            { id: 61, th: "คุณต้องการอะไร", zh: "您要什么？" },
+            { id: 62, th: "แอปเปิ้ลโลละเท่าไร", zh: "苹果多少钱一斤？" },
+            { id: 63, th: "โลละ 7 หยวน 5 เหมา", zh: "七块五一斤，" },
+            { id: 64, th: "คุณต้องการเท่าไร", zh: "您要多少？" },
+            { id: 65, th: "คุณต้องการอย่างอื่นอีกไหม", zh: "您还要别的吗？" },
+            { id: 66, th: "ไม่เอาแล้ว", zh: "不要了，" },
+            { id: 67, th: "ฉันจะซื้อส้ม", zh: "我要买橘子，" },
+            { id: 68, th: "คุณลองชิมก่อนสิ", zh: "您尝尝，" },
+            { id: 69, th: "อากาศหนาวแล้ว", zh: "天冷了，" },
+            { id: 70, th: "ฉันอยากจะซื้อเสื้อไหมพรมสักตัวหนึ่ง", zh: "我想买件毛衣，" },
+            { id: 71, th: "ไปวันอาทิตย์ ดีไหม", zh: "星期天去，怎么样？" },
+            { id: 72, th: "วันอาทิตย์คนเยอะ", zh: "星期天人多，" },
+            { id: 73, th: "ฉันขอดูเสื้อไหมพรมตัวนั้นหน่อย", zh: "我看看那件毛衣，" },
+            { id: 74, th: "เสื้อไหมพรมตัวนี้ ฉันขอลองหน่อยได้ไหม", zh: "这件毛衣我可以试试吗？" },
+            { id: 75, th: "เสื้อไหมพรมตัวนี้ ไม่เล็กไปแล้วก็ไม่ใหญ่ไป", zh: "这件毛衣不大也不小，" },
+            { id: 76, th: "เยี่ยมมากเลย", zh: "好极了，" },
+            { id: 77, th: "รถสายนี้ ไปจตุรัสเทียนอันเหมินไหม", zh: "这路车到天安门吗？" },
+            { id: 78, th: "ฉันซื้อตั๋ว 2 ใบ", zh: "我买两张票，" },
+            { id: 79, th: "จ่ายให้คุณ 5 หยวน", zh: "给你五块钱，" },
+            { id: 80, th: "ยังมีอีกกี่ป้ายถึงจตุรัสเทียนอันเหมิน", zh: "到天安门还有几站？" },
+            { id: 81, th: "ฉันพูดภาษาจีนได้นิดหน่อย", zh: "我会说一点汉语，" },
+            { id: 82, th: "ถึงจตุรัสเทียนอันเหมินแล้ว", zh: "天安门到了，" },
+            { id: 83, th: "ไปมหาวิทยาลัยภาษาต้องเปลี่ยนรถไหม", zh: "去语言大学要换车吗？" },
+            { id: 84, th: "เปลี่ยนรถสายไหน", zh: "换几路车？" },
+            { id: 85, th: "เงินใช้หมดแล้ว", zh: "钱都花了，" },
+            { id: 86, th: "ได้ยินมาว่า ในโรงแรมสามารถแลกเงินได้", zh: "听说饭店里可以换钱，" },
+            { id: 87, th: "ที่นี่แลกเงินได้ไหม", zh: "这能不能换钱？" },
+            { id: 88, th: "คุณนำเงินอะไรมาแลก", zh: "您带的什么钱？" },
+            { id: 89, th: "กรุณาเขียนจำนวนเงินตรงนี้ให้หน่อย", zh: "请您在这写一下钱数，" },
+            { id: 90, th: "กรุณานับหน่อยด้วย", zh: "请数一数，" },
+            { id: 91, th: "จะสายแล้วนะ", zh: "时间不早了，" },
+            { id: 92, th: "พวกเรารีบไปกันเถอะ", zh: "我们快走吧，" },
+            { id: 93, th: "นี่เป็นโปสการ์ดออกใหม่", zh: "这是新出的明信片，" },
+            { id: 94, th: "ยังมีที่สวยๆอีกไหม", zh: "还有好看的吗，" },
+            { id: 95, th: "แบบนี้เป็นอย่างไรบ้าง", zh: "这几种怎么样？" },
+            { id: 96, th: "กรุณาช่วยเลือกซัก2-3แบบ", zh: "请你帮我挑几种，" },
+            { id: 97, th: "เอาแบบละ 1 ชุด", zh: "一种买一套吧，" },
+            { id: 98, th: "โทรศัพท์แบตหมดแล้ว", zh: "手机没电了，" },
+            { id: 99, th: "คุณโทรติดหรือยัง", zh: "你打通电话了吗？" },
+            { id: 100, th: "เขาปิดเครื่องแล้ว", zh: "她关机了，" } 
+
 ];
 
 let learnedSentences = new Set();
 let isAudioPlaying = false; 
 let isChineseMode = false;
 let userProfile = { name: "同学", avatar: "" };
+let fadeInterval = null; // 提取至全局，便于多处生命周期中精准清理淡入定时器
+
+// 用于音频交替切换的全局状态管理
+const audioToggles = {}; // 动态字典：记录每一个句子下一次应该放 A 轨(true) 还是 B 轨(false)
+let lastPlayedId = null; // 变量：记录上一次成功播放的句子 ID
 
 const mainAudio = new Audio();
 const scoreAudio = new Audio('audio/yinxiao-ding.mp3');     
@@ -116,9 +128,10 @@ const ui = {
     body: document.body
 };
 
+// 初始化 LIFF 与页面组件
 async function init() {
     try {
-        await liff.init({ liffId: "2009077149-TmSHxUzU" });
+        await liff.init({ liffId: "2009077149-jVSq4jaZ" });
         if (liff.isLoggedIn()) {
             const profile = await liff.getProfile();
             userProfile.name = profile.displayName;
@@ -126,38 +139,56 @@ async function init() {
         }
     } catch (err) { console.warn("LIFF Load Fail"); }
     renderList();
-    ui.langBtn.onclick = toggleLanguage;
+    document.querySelector('.lang-wrapper').onclick = toggleLanguage;
     updateScore(false);
 }
 
+// 动态渲染列表
 function renderList() {
     const fragment = document.createDocumentFragment();
     sentences.forEach(s => {
+        const isHeader = typeof s.id === 'string' && s.id.includes('标题');
         const li = document.createElement('li');
-        li.className = 'sentence-item';
-        li.id = `item-${s.id}`;
-        li.innerHTML = `
-            <div class="sentence-no">${s.id}</div>
-            <div class="text-content">
-                <div class="zh-text">${s.zh}</div>
-                <div class="th-text">${s.th}</div>
-            </div>`;
-        li.onclick = () => handlePlay(s, li);
+        
+        if (isHeader) {
+            li.className = 'sentence-header'; 
+            li.id = `header-${s.id}`;
+            li.innerHTML = `
+                <div class="header-zh-text">${s.zh}</div>
+                <div class="header-th-text">${s.th}</div>
+            `;
+        } else {
+            // 初始化当前句子的切换状态：默认首次播放加载原音频(true)
+            audioToggles[s.id] = true; 
+
+            li.className = 'sentence-item';
+            li.id = `item-${s.id}`;
+            li.innerHTML = `
+                <div class="sentence-no">${s.id}</div>
+                <div class="text-content">
+                    <div class="zh-text">${s.zh}</div>
+                    <div class="th-text">${s.th}</div>
+                </div>`;
+            li.onclick = () => handlePlay(s, li);
+        }
         fragment.appendChild(li);
     });
+    
+    ui.list.innerHTML = ''; // BUG 修复：挂载前主动清空容器，防止动态刷新时列表重叠
     ui.list.appendChild(fragment);
 }
 
+// 极简高性能双语切换
 function toggleLanguage() {
-    if (isAudioPlaying) return;
+    if (isAudioPlaying) return; // 点读音频播放时锁定切换
     isChineseMode = !isChineseMode;
-    document.querySelectorAll('.zh-text').forEach(el => el.style.display = isChineseMode ? 'block' : 'none');
-    document.querySelectorAll('.th-text').forEach(el => el.style.display = isChineseMode ? 'none' : 'block');
+    
+    // 一键响应，无缝衔接 CSS
+    ui.body.classList.toggle('lang-mode-zh', isChineseMode);
+    ui.langBtn.classList.toggle('chinese', isChineseMode);
 }
 
-/**
- * 修改后的 handlePlay 逻辑
- */
+// 点读核心控制
 function handlePlay(s, element) {
     if (isAudioPlaying) return;
     
@@ -165,75 +196,108 @@ function handlePlay(s, element) {
 
     isAudioPlaying = true;
     ui.body.classList.add('locked-mode');
-    element.classList.add('playing-now'); // 开始朗读，应用缩放效果
+    element.classList.add('playing-now');
 
     const isFirstTime = !learnedSentences.has(s.id); 
-    mainAudio.src = `audio/${s.id}.mp3`;
+
+    // 1. 如果用户中途去点了别的句子，需将当前句子的音频开关重置回初始 A 轨状态
+    if (lastPlayedId !== s.id) {
+        audioToggles[s.id] = true; 
+    }
+    
+    // 2. 记录当前试图播放的是 A 轨还是 B 轨，方便在 onerror 中做判断
+    const tryingBTrack = !audioToggles[s.id]; 
+    
+    // 根据状态字典决定本次音频名：true 播放 `id.mp3`，false 播放 `id-b.mp3`
+    const url = `audio/${audioToggles[s.id] ? s.id : s.id + '-b'}.mp3`;
+    
+    // 状态预先取反：为下一次重复点击该句子切换音轨做准备
+    audioToggles[s.id] = !audioToggles[s.id];
+    lastPlayedId = s.id; // 更新最后播放记录为当前句子 ID
+    
+    mainAudio.src = url;
     
     mainAudio.onplay = () => {
         mainAudio.volume = 0;
         let v = 0;
-        const fade = setInterval(() => {
+        clearInterval(fadeInterval); // 播放前安全清理上一次未完结的淡入
+        fadeInterval = setInterval(() => {
             v += 0.2;
-            if (v >= 1) { mainAudio.volume = 1; clearInterval(fade); }
+            if (v >= 1) { mainAudio.volume = 1; clearInterval(fadeInterval); }
             else mainAudio.volume = v;
         }, 30);
     };
 
-    // 当句子朗读结束时
+    // 抽离统一的播放状态重置函数
+    const resetPlaybackState = () => {
+        clearInterval(fadeInterval); // BUG 修复：防止超短音频提前结束导致的定时器溢出与音量冲突
+        isAudioPlaying = false;
+        ui.body.classList.remove('locked-mode');
+    };
+
     mainAudio.onended = () => {
-        
-        // --- 核心修改：朗读一结束，立刻移除缩放效果 ---
         element.classList.remove('playing-now');
         element.classList.add('has-learned');
 
-        // --- 同时开始播放反馈音效 ---
         const feedbackAudio = isFirstTime ? scoreAudio : bubbleAudio;
         feedbackAudio.currentTime = 0;
         feedbackAudio.play().catch(()=>{});
 
-        // 逻辑处理：更新分数
         if (isFirstTime) {
             learnedSentences.add(s.id);
             updateScore(false); 
         }
 
-        // 音效播放结束后，彻底解除锁定（允许点击下一句）
-        feedbackAudio.onended = () => {
-            isAudioPlaying = false;
-            ui.body.classList.remove('locked-mode');
-        };
-
-        // 容错处理
-        feedbackAudio.onerror = () => {
-            isAudioPlaying = false;
-            ui.body.classList.remove('locked-mode');
-        };
+        feedbackAudio.onended = resetPlaybackState;
+        feedbackAudio.onerror = resetPlaybackState;
     };
     
+    // ====== 核心修改：智能容错降级机制 ======
     mainAudio.onerror = () => {
-        isAudioPlaying = false;
-        ui.body.classList.remove('locked-mode');
-        element.classList.remove('playing-now');
+        // 如果是在尝试播放 B 轨（-b.mp3）时报错了，说明该句子没有配双轨音频
+        if (tryingBTrack) {
+            console.warn(`句子 ${s.id} 未检测到 B 轨音频，自动降级播放原音频。`);
+            
+            // 恢复该句子的状态字典，让它下一次依然尝试原音频
+            audioToggles[s.id] = false; 
+            
+            // 重新切回原音频路径并播放
+            mainAudio.src = `audio/${s.id}.mp3`;
+            mainAudio.play().catch(() => {
+                // 如果连原音频也挂了（彻底没文件），才执行真正的彻底重置
+                resetPlaybackState();
+                element.classList.remove('playing-now');
+            });
+        } else {
+            // 如果是正常 A 轨就报错，说明这个句子根本没音频，直接释放锁，不卡死界面
+            resetPlaybackState();
+            element.classList.remove('playing-now');
+        }
     };
 
     mainAudio.play().catch(mainAudio.onerror);
 }
 
+// 计分板与进度条实时同步
 function updateScore(shouldPlaySound = true) {
     const current = learnedSentences.size;
-    const total = sentences.length;
+    // 过滤掉包含“标题”字样的占位项，精准计算核心句型总数
+    const total = sentences.filter(s => !(typeof s.id === 'string' && s.id.includes('标题'))).length;
+    
     ui.score.textContent = `${current}/${total}`;
-    ui.progress.style.width = `${(current / total) * 100}%`;
+    ui.progress.style.width = `${total > 0 ? (current / total) * 100 : 0}%`;
+    
     if (shouldPlaySound) {
         scoreAudio.currentTime = 0;
         scoreAudio.play().catch(()=>{});
     }
+    
     if (current >= total && total > 0) {
         setTimeout(showCongrats, 800);
     }
 }
 
+// 展现通关喜报弹窗
 function showCongrats() {
     winAudio.play().catch(() => {});
     const now = new Date();
@@ -241,6 +305,39 @@ function showCongrats() {
     document.getElementById('userName').textContent = userProfile.name;
     document.getElementById('userImg').src = userProfile.avatar || 'images/default-avatar.jpg';
     document.getElementById('congrats-overlay').style.display = 'flex';
+}
+
+// Supabase 初始化配置
+const supabaseUrl = 'https://tpxvlpkyxzuqcnhkuaos.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRweHZscGt5eHp1cWNuaGt1YW9zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIwMzI4NjcsImV4cCI6MjA4NzYwODg2N30.ZKZuZ1tazEVInlmU3IBQ_1DuRCvUedqpyqSRlbOw3Bk';
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+// 数据异步上传并关闭 LIFF 窗口
+async function handleUploadAndClose() {
+    const name = userProfile.name || "LINE同学"; 
+    const lessonElement = document.getElementById('lessonTitle');
+    const lesson = lessonElement ? lessonElement.innerText : "未知课程"; 
+
+    try {
+        const { error } = await supabaseClient
+            .from('learning_logs')
+            .insert([{ 
+                student_name: name, 
+                lesson_id: lesson
+            }]);
+
+        if (error) {
+            console.error("Supabase 儲存失敗:", error.message);
+        } else {
+            console.log(`數據已成功遞交至 Supabase！课程：${lesson}`);
+        }
+    } catch (err) {
+        console.error("執行上传时发生异常:", err);
+    } finally {
+        if (typeof liff !== 'undefined' && liff.closeWindow) {
+            liff.closeWindow();
+        }
+    }
 }
 
 window.onload = init;
